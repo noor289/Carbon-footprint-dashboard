@@ -1,9 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-
   const formatNumber = (num) => num.toLocaleString("en-US");
-
   const isEmpty = (arr) => !arr || arr.length === 0;
-
   const showEmptyState = (canvasEl, message = "No data available yet.") => {
     const container = canvasEl.parentElement;
     canvasEl.style.display = "none";
@@ -12,10 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
     emptyDiv.textContent = message;
     container.appendChild(emptyDiv);
   };
-
   Chart.defaults.font.family = "Manrope, DM Sans, sans-serif";
   Chart.defaults.color = "#555B55";
-
   const yearlyCanvas = document.getElementById("yearlyTrendChart");
   if (isEmpty(dashboardData.yearlyHistory.values)) {
     showEmptyState(yearlyCanvas, "No yearly data available yet.");
@@ -48,7 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-
   const categoryCanvas = document.getElementById("reportsCategoryChart");
   if (isEmpty(dashboardData.categories.values)) {
     showEmptyState(categoryCanvas, "No category data available yet.");
@@ -74,10 +68,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-
   const tableBody = document.getElementById("reportsTableBody");
   const { labels, values } = dashboardData.yearlyHistory;
-
   if (isEmpty(values)) {
     tableBody.innerHTML = `<tr><td colspan="3" class="py-4 text-muted">No history available yet.</td></tr>`;
   } else {
@@ -86,7 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const prevValue = i > 0 ? values[i - 1] : null;
       let changeText = "—";
       let changeClass = "text-muted";
-
       if (prevValue !== null) {
         const change = ((value - prevValue) / prevValue) * 100;
         const rounded = Math.round(change * 10) / 10;
@@ -94,7 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
         changeText = `${arrow} ${Math.abs(rounded)}%`;
         changeClass = rounded < 0 ? "text-accent" : rounded > 0 ? "text-warm" : "text-muted";
       }
-
       const row = document.createElement("tr");
       row.className = "border-b border-black/5 last:border-0";
       row.innerHTML = `
@@ -105,5 +95,4 @@ document.addEventListener("DOMContentLoaded", () => {
       tableBody.appendChild(row);
     });
   }
-
 });

@@ -1,42 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
-
   const formatNumber = (num) => num.toLocaleString("en-US");
-
   const isEmpty = (arr) => !arr || arr.length === 0;
-
   const showEmptyState = (canvasEl, message = "No data available yet.") => {
     const container = canvasEl.parentElement;
     canvasEl.style.display = "none";
-
     const emptyDiv = document.createElement("div");
     emptyDiv.className = "flex items-center justify-center h-40 text-sm text-text/50";
     emptyDiv.textContent = message;
-
     container.appendChild(emptyDiv);
   };
-
   document.getElementById("stat-total").textContent =
     `${formatNumber(dashboardData.stats.totalThisMonth)} kg CO₂e`;
-
   const change = dashboardData.stats.percentChange;
   const changeEl = document.getElementById("stat-change");
   const arrow = change < 0 ? "↓" : "↑";
-
   changeEl.textContent = `${arrow} ${formatNumber(Math.abs(change))}%`;
   changeEl.classList.add(change < 0 ? "text-accent" : "text-warm");
-
   document.getElementById("stat-trees").textContent =
     `${formatNumber(dashboardData.stats.treesEquivalent)} trees`;
-
   document.getElementById("stat-goal").textContent =
     `${formatNumber(dashboardData.stats.goalProgress)}%`;
-
   document.getElementById("last-updated").textContent =
     dashboardData.stats.lastUpdated;
-
   const tipsList = document.getElementById("tips-list");
   tipsList.innerHTML = "";
-
   if (isEmpty(dashboardData.tips)) {
     tipsList.innerHTML = `
       <li class="flex gap-2 items-start text-text/50">
@@ -61,12 +48,9 @@ document.addEventListener("DOMContentLoaded", () => {
       tipsList.appendChild(li);
     });
   }
-
   Chart.defaults.font.family = "Manrope, DM Sans, sans-serif";
   Chart.defaults.color = "#555B55";
-
   const trendCanvas = document.getElementById("trendChart");
-
   if (isEmpty(dashboardData.trend.values)) {
     showEmptyState(trendCanvas, "No trend data available yet.");
   } else {
@@ -103,9 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-
   const categoryCanvas = document.getElementById("categoryChart");
-
   if (isEmpty(dashboardData.categories.values)) {
     showEmptyState(categoryCanvas, "No category data available yet.");
   } else {
@@ -136,9 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-
   const comparisonCanvas = document.getElementById("comparisonChart");
-
   if (isEmpty(dashboardData.comparison.thisMonth)) {
     showEmptyState(comparisonCanvas, "No comparison data available yet.");
   } else {
@@ -185,5 +165,4 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-
 });
