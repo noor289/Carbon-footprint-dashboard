@@ -29,7 +29,7 @@ const dashboardData = {
     "Switch one car trip a week to walking or cycling.",
     "Unplug devices on standby to cut phantom energy use.",
     "Try one plant-based meal per day this month.",
-    "Set your thermostat 1°C lower — big yearly savings."
+    "Set your thermostat 1°C lower, big yearly savings."
   ]
 
 };
