@@ -1,6 +1,4 @@
-//sample data
 const dashboardData = {
-
   stats: {
     totalThisMonth: 284,
     percentChange: -12,
@@ -30,6 +28,18 @@ const dashboardData = {
     "Unplug devices on standby to cut phantom energy use.",
     "Try one plant-based meal per day this month.",
     "Set your thermostat 1°C lower, big yearly savings."
-  ]
+  ],
 
+  yearlyHistory: {
+    labels: ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"],
+    values: [365, 358, 372, 350, 340, 330, 340, 322, 355, 310, 298, 284]
+  },
+
+  goal: {
+    targetPercent: 30,
+    currentPercent: 68,
+    targetDate: "2026-12-31",
+    baselineMonth: "Oct 2025",
+    baselineValue: 372
+  }
 };

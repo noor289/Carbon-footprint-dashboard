@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Goals | Carbon Footprint Dashboard</title>
+  <meta name="description" content="Track your carbon reduction goal progress and set new emissions targets.">
+
+  <link rel="canonical" href="https://noor289.github.io/Carbon-footprint-dashboard/goals.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Goals | Carbon Footprint Dashboard">
+  <meta property="og:description" content="Track your carbon reduction goal progress and set new emissions targets.">
+  <meta property="og:url" content="https://noor289.github.io/Carbon-footprint-dashboard/goals.html">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Goals | Carbon Footprint Dashboard">
+  <meta name="twitter:description" content="Track your carbon reduction goal progress and set new emissions targets.">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/tailwind.css">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-background text-text font-sans">
+
+  <div class="flex min-h-screen">
+
+    <aside id="sidebar"
+      class="fixed lg:static inset-y-0 left-0 z-40 w-64 bg-primary text-white flex flex-col p-6
+             transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
+      <div class="flex items-center justify-between mb-10">
+        <span class="text-2xl font-bold">🌱 EcoTrack</span>
+        <button id="sidebarClose" class="lg:hidden text-white/80 hover:text-white" aria-label="Close sidebar">
+          ✕
+        </button>
+      </div>
+      <nav class="flex flex-col gap-2 text-sm">
+        <a href="index.html" class="px-3 py-2 rounded-lg hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2">Dashboard</a>
+        <a href="reports.html" class="px-3 py-2 rounded-lg hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2">Reports</a>
+        <a href="goals.html" class="px-3 py-2 rounded-lg bg-white/10 font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2" aria-current="page">Goals</a>
+      </nav>
+    </aside>
+
+    <div id="sidebarBackdrop" class="fixed inset-0 bg-black/40 z-30 hidden lg:hidden"></div>
+
+    <div class="flex-1 flex flex-col">
+
+      <header class="flex items-center gap-4 px-6 lg:px-10 py-6 border-b border-black/5">
+        <button id="sidebarToggle" class="p-2 rounded-lg hover:bg-black/5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2" aria-label="Toggle sidebar">
+          <span class="block w-5 h-0.5 bg-primary mb-1"></span>
+          <span class="block w-5 h-0.5 bg-primary mb-1"></span>
+          <span class="block w-5 h-0.5 bg-primary"></span>
+        </button>
+        <div>
+          <h1 class="text-2xl font-bold text-primary">Reduction Goals</h1>
+          <p class="text-sm text-muted">Track progress and set new targets</p>
+        </div>
+      </header>
+
+      <main class="flex-1 px-6 lg:px-10 py-8 space-y-8">
+
+        <section aria-label="Current goal progress" class="bg-card rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow duration-200">
+          <div class="flex items-center justify-between mb-2">
+            <h2 class="font-semibold text-primary">Current Goal</h2>
+            <span id="goalTargetLabel" class="text-sm text-muted">—</span>
+          </div>
+          <p class="text-sm text-muted mb-4">Baseline: <span id="goalBaseline">—</span></p>
+
+          <div class="w-full bg-background rounded-full h-4 overflow-hidden">
+            <div id="goalProgressBar" class="h-full bg-accent rounded-full transition-all duration-500" style="width: 0%"></div>
+          </div>
+          <div class="flex items-center justify-between mt-2 text-sm">
+            <span id="goalProgressLabel" class="font-medium text-accent">—</span>
+            <span class="text-muted">Target date: <span id="goalTargetDate">—</span></span>
+          </div>
+        </section>
+
+        <section aria-label="Set a new goal" class="bg-card rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow duration-200">
+          <h2 class="font-semibold text-primary mb-4">Set a New Goal</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label for="goalPercentInput" class="block text-sm text-muted mb-1">Target reduction (%)</label>
+              <input type="number" id="goalPercentInput" min="1" max="100" placeholder="e.g. 30"
+                class="w-full px-3 py-2 rounded-lg border border-black/10 bg-background text-text focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+            </div>
+            <div>
+              <label for="goalDateInput" class="block text-sm text-muted mb-1">Target date</label>
+              <input type="date" id="goalDateInput"
+                class="w-full px-3 py-2 rounded-lg border border-black/10 bg-background text-text focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+            </div>
+          </div>
+          <button id="goalSubmitBtn" type="button"
+            class="bg-primary text-white px-5 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2">
+            Update Goal
+          </button>
+          <p id="goalFormMessage" class="text-sm text-accent mt-3 hidden">Goal updated! (Preview only — not saved permanently.)</p>
+        </section>
+
+      </main>
+
+      <footer class="px-6 lg:px-10 py-6 text-center text-xs text-muted border-t border-black/5">
+        © 2026 EcoTrack Dashboard — Built for a greener tomorrow.
+      </footer>
+
+    </div>
+  </div>
+
+  <script src="js/data.js" defer></script>
+  <script src="js/goals.js" defer></script>
+  <script src="js/sidebar.js" defer></script>
+</body>
+</html>
