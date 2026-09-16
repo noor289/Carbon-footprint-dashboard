@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://noor289.github.io/Carbon-footprint-dashboard/sitemap.xml
